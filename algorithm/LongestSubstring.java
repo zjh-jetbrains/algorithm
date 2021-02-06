@@ -14,8 +14,6 @@ public class LongestSubstring {
                 if (!stringBuffer.toString().contains(String.valueOf(temp.charAt(x)))){
                     stringBuffer.append(temp.charAt(x));
                 }else {
-                    System.out.println("test:"+stringBuffer.toString());
-                    System.out.println("test:"+stringBuffer.length());
                     listLength.add(stringBuffer.length());
                     stringBuffer = new StringBuffer();
                     stringBuffer.append(temp.charAt(x));
