@@ -7,11 +7,13 @@ public class ShellSort {
     /**
      * 只要实现了Comparable接口的类型均可使用此方法进行排序
      * @param a:一个实现了Comparable接口的类型的数组
+     * @param split:希尔排序要将整个大数组分为多个小数组，此参数的意义为划分的数组的个数或者划分的
+     * 数组中每两个数据之间的间隔。因为要在其他类中进行效率测试，所以才使用可变参数
      */
-    public static void sort(Comparable a[]){
+    public static void sort(Comparable a[],int ... split){
         int h=1;
-        while (h<a.length/3){
-            h=h*3+1;  //1,4,13,40...
+        while (h<a.length/split[0]){
+            h=h*split[0]+1;  //1,4,13,40...
         }
         while (h>=1){
             for (int x=h;x<a.length;x++){
@@ -19,7 +21,7 @@ public class ShellSort {
                     swap(a,y-h,y);
                 }
             }
-            h/=3;
+            h/=split[0];
         }
     }
     /**
@@ -57,7 +59,7 @@ public class ShellSort {
 
     public static void main(String[] args) {
         Integer [] test = new Integer[]{1,5,7,0,85,2,3,7,1,4,0,6};
-        sort(test);
+        sort(test,3);
         show(test);
         System.out.println(isSorted(test));
     }

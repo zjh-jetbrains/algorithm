@@ -12,7 +12,7 @@ public class SortCompare {
         if (sortName.equals("Bubble")) BubbleSort.sort(a);
         if (sortName.equals("Insertion")) InsertionSort.sort(a);
         if (sortName.equals("Selection")) SelectionSort.sort(a);
-        if (sortName.equals("Shell")) ShellSort.sort(a);
+        if (sortName.equals("Shell")) ShellSort.sort(a,3);
         double end = System.currentTimeMillis();
         return (end-start)/1000;  // 以秒为单位
     }
