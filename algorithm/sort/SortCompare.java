@@ -15,6 +15,8 @@ public class SortCompare {
         if (sortName.equals("Shell")) ShellSort.sort(a,3);
         if (sortName.equals("MergeTD")) MergeSort.topDownSort(a);
         if (sortName.equals("MergeBU")) MergeSort.bottomUpSort(a);
+        if (sortName.equals("Quick")) QuickSort.sort(a);
+        if (sortName.equals("QuickThreeWay")) QuickSort.threeWaySort(a);
         double end = System.currentTimeMillis();
         return (end-start)/1000;  // 以秒为单位
     }
@@ -45,5 +47,7 @@ public class SortCompare {
         System.out.println("希尔排序："+timeRandomInput("Shell",1000,10));
         System.out.println("归并排序(自顶向下)："+timeRandomInput("MergeTD",1000,10));
         System.out.println("归并排序(自底向上)："+timeRandomInput("MergeBU",1000,10));
+        System.out.println("快速排序："+timeRandomInput("Quick",1000,10));
+        System.out.println("快速排序(三向切分)："+timeRandomInput("QuickThreeWay",1000,10));
     }
 }
