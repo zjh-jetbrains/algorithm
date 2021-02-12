@@ -17,6 +17,7 @@ public class SortCompare {
         if (sortName.equals("MergeBU")) MergeSort.bottomUpSort(a);
         if (sortName.equals("Quick")) QuickSort.sort(a);
         if (sortName.equals("QuickThreeWay")) QuickSort.threeWaySort(a);
+        if (sortName.equals("Heap")) HeapSort.sort(a);
         double end = System.currentTimeMillis();
         return (end-start)/1000;  // 以秒为单位
     }
@@ -28,11 +29,11 @@ public class SortCompare {
      * @param t:数组的数量
      * @return:
      */
-    public static double timeRandomInput(String sortName, int n, int t){
+    public static double timeRandomInput(String sortName, int n, int t, int firstIndex){
         double total = 0.0;
         Comparable a [] = new Double[n];
         for (int x=0;x<t;x++){
-            for (int y=0;y<n;y++){
+            for (int y=firstIndex;y<n;y++){
                 a[y] = Math.random();
             }
             double singleTime = calTime(sortName, a);
@@ -41,13 +42,14 @@ public class SortCompare {
         return total;
     }
     public static void main(String[] args) {
-        System.out.println("选择排序："+timeRandomInput("Selection",1000,10));
-        System.out.println("插入排序："+timeRandomInput("Insertion",1000,10));
-        System.out.println("冒泡排序："+timeRandomInput("Bubble",1000,10));
-        System.out.println("希尔排序："+timeRandomInput("Shell",1000,10));
-        System.out.println("归并排序(自顶向下)："+timeRandomInput("MergeTD",1000,10));
-        System.out.println("归并排序(自底向上)："+timeRandomInput("MergeBU",1000,10));
-        System.out.println("快速排序："+timeRandomInput("Quick",1000,10));
-        System.out.println("快速排序(三向切分)："+timeRandomInput("QuickThreeWay",1000,10));
+        System.out.println("选择排序："+timeRandomInput("Selection",1000,10,0));
+        System.out.println("插入排序："+timeRandomInput("Insertion",1000,10,0));
+        System.out.println("冒泡排序："+timeRandomInput("Bubble",1000,10,0));
+        System.out.println("希尔排序："+timeRandomInput("Shell",1000,10,0));
+        System.out.println("归并排序(自顶向下)："+timeRandomInput("MergeTD",1000,10,0));
+        System.out.println("归并排序(自底向上)："+timeRandomInput("MergeBU",1000,10,0));
+        System.out.println("快速排序："+timeRandomInput("Quick",1000,10,0));
+        System.out.println("快速排序(三向切分)："+timeRandomInput("QuickThreeWay",1000,10,0));
+        System.out.println("堆排序："+timeRandomInput("Heap",1000,10,1));
     }
 }
