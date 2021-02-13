@@ -12,7 +12,7 @@ public class MergeSort {
      * @param middle:将数组一分为二的中间下标
      * @param right:最后一个元素的下标
      */
-    public static void situSort(Comparable a[],int left, int middle, int right){
+    private static void situSort(Comparable a[],int left, int middle, int right){
         int x = left;// 左半边的第一个元素
         int y = middle+1;// 右半边的第一个元素
         for (int z=left;z<=right;z++){  // 拷贝

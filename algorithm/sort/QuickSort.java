@@ -37,7 +37,7 @@ public class QuickSort {
      * @param right:最右边的元素索引（最后一个）
      * @return:返回切分后的中间值的索引
      */
-    public static int partition(Comparable a[],int left,int right){
+    private static int partition(Comparable a[],int left,int right){
         Comparable variable = a[left];// 选择数组的一个元素作为中间值，即它的左边的元素不大于它，它的右边的元素不小于它
         int i=left;
         int j=right+1;
@@ -78,8 +78,8 @@ public class QuickSort {
             else if (result>0) swap(a,i,k--);
             else i++;
         }
-        threeWaySort(a,left,j-1);
-        threeWaySort(a,k+1,right);
+        threeWaySort(a,left,j-1);// 再比较小于中间值部分的数据
+        threeWaySort(a,k+1,right);// 再比较大于中间值部分的数据
     }
     /**
      * 交换数组中的两个元素
