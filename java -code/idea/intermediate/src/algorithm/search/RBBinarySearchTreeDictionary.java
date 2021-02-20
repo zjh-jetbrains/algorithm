@@ -33,9 +33,6 @@ public class RBBinarySearchTreeDictionary <Key extends Comparable<Key>,Value>{
         else if (result>0) return this.get(node.right,key);
         else return node;
     }
-    public void deleteMin(){}
-    public void deleteMax(){}
-    public void delete(){}
     private boolean isRed(Node node){
         if (node==null) return false;
         return node.color==RED;
