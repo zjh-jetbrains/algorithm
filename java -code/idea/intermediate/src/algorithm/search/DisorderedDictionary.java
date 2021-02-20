@@ -1,7 +1,7 @@
 package algorithm.search;
 
 import java.util.*;
-
+// 无序链表
 public class DisorderedDictionary<Key,Value>{
     private Node first;
     private int count=0;

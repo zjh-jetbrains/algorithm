@@ -1,7 +1,7 @@
 package algorithm.search;
 
 import java.util.Iterator;
-
+// 无序链表实现动态数组
 public class ListNode<T> implements Iterable<T> {
     private Node head;
     private int count=0;

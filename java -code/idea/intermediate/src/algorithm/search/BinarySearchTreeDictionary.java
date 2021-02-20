@@ -1,7 +1,7 @@
 package algorithm.search;
 
 import java.util.*;
-
+// 二叉树
 public class BinarySearchTreeDictionary<Key extends Comparable<Key>,Value> {
     private Node root;
     public void put(Key key,Value value){
