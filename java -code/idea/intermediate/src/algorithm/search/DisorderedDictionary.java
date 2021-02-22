@@ -41,9 +41,10 @@ public class DisorderedDictionary<Key,Value>{
         Node currentNode = this.first;
         Node temp = this.first.next;
         if (this.size()==1&&currentNode.key.equals(key)){
+            Value val = this.first.value;
             this.first=null;
             this.count--;
-            return this.first.value;
+            return val;
         }else if (this.size()>1){
             if (currentNode.key.equals(key)){
                 this.first = this.first.next;
@@ -136,7 +137,7 @@ public class DisorderedDictionary<Key,Value>{
         dictionary.put(5,"lwx");
         dictionary.put(6,"lt");
         dictionary.toDict();
-        System.out.println(dictionary.remove(4));
+        System.out.println(dictionary.remove(1));
         dictionary.toDict();
         dictionary.toListKey();
         dictionary.put(7,"lwy");
