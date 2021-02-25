@@ -90,21 +90,15 @@ public class ListNode<T> implements Iterable<T> {
     public boolean isEmpty(){return this.size()==0;}
     private class ListNodeIterator implements Iterator<T>{
         private int i = count;
+        private Node temp= head;
         @Override
         public boolean hasNext() {
             return this.i>0;
         }
-        private T iter(){
-            Node tem = head;
-            T value = tem.value;
-            if (tem.next!=null){
-                tem=tem.next;
-            }
-            return value;
-        }
         @Override
         public T next() {
-            T val = this.iter();
+            T val = temp.value;
+            temp=temp.next;
             this.i--;
             return val;
         }
@@ -127,11 +121,9 @@ public class ListNode<T> implements Iterable<T> {
         listNode.add(4);
         listNode.add(6);
         listNode.add(2);
-        listNode.toArray();
-        System.out.println(listNode.get(2));
-        System.out.println(listNode.get(0));
-        listNode.set(2,5);
-        System.out.println(listNode.get(0));
-        listNode.toArray();
+        Iterator<Integer> iterator = listNode.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
     }
 }
