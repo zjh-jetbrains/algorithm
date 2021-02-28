@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
-// 深度优先搜索-连通分量
+// 深度优先搜索-连通分量(无向图)
 public class ConnectedComponent {
     private boolean [] marked;
     private int [] id;

@@ -3,7 +3,7 @@ package algorithm.graph;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-// 无环图问题
+// 无环图问题（无向图）
 public class Cycle {
     private boolean [] marked;
     private boolean hasCycle;

@@ -1,5 +1,7 @@
 package algorithm.graph;
 
+import algorithm.search.ListNode;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Stack;
@@ -32,11 +34,11 @@ public class DepthFirstSearch {
     }
     public Iterable<Integer> pathTo(int end){
         if (!this.hasPathTo(end)) return null;
-        Stack<Integer> stack = new Stack<>();
+        ListNode<Integer> stack = new ListNode<>();
         for (int x=end;x!=this.start;x=this.edgeTo[x]){
-            stack.push(x);
+            stack.add(x);
         }
-        stack.push(this.start);
+        stack.add(this.start);
         return stack;
     }
     public String toString(int end){
@@ -45,8 +47,8 @@ public class DepthFirstSearch {
         for (int x:this.pathTo(end)){
             str+=x+"-";
         }
-        StringBuffer stringBuffer = new StringBuffer(str.substring(0,str.length()-1));
-        return temp+stringBuffer.reverse().toString();
+        str=str.substring(0,str.length()-1);
+        return temp+str;
     }
 
     public static void main(String[] args) throws Exception{
