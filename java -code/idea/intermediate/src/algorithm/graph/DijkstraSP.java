@@ -5,7 +5,7 @@ import algorithm.search.ListNode;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
-
+// 最短路径-dijkstra
 public class DijkstraSP {
     private DirectedEdge [] edges;
     private double [] distTo;
@@ -75,7 +75,7 @@ public class DijkstraSP {
     public static void main(String[] args) throws Exception{
         EdgeWeightedDirectedGraph edgeWeightedGraph = new EdgeWeightedDirectedGraph(new BufferedReader(new InputStreamReader(System.in)));
         DijkstraSP sp = new DijkstraSP(edgeWeightedGraph);
-        for (int x=0;x<8;x++){
+        for (int x=0;x<3;x++){
             System.out.println(sp.toString(x));
         }
     }

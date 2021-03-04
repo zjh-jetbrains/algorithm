@@ -1,53 +1,54 @@
-package algorithm.graph;
+package algorithm.graph.acyclic.sp;
 
+import algorithm.graph.DirectedEdge;
+import algorithm.graph.EdgeWeightedDirectedGraph;
 import algorithm.search.ListNode;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-// 有向图是否存在有向环
+// 基于DirectedEdge类和EdgeWeightedDirectedGraph类实现
 public class DirectedCycle {
     private boolean [] marked;
-    private int [] edgeTo;
-    private ListNode<Integer> cycle;
+    private DirectedEdge [] edgeTo;
+    private ListNode<DirectedEdge> cycle;
     private boolean [] stack;
-    public DirectedCycle(DirectedGraph graph){
-        this.marked=new boolean[graph.getV()];
-        this.edgeTo=new int[graph.getV()];
-        this.stack=new boolean[graph.getV()];
-        for (int x=0;x< graph.getV();x++){
+    public DirectedCycle(EdgeWeightedDirectedGraph graph){
+        this.marked=new boolean[graph.V()];
+        this.edgeTo=new DirectedEdge[graph.V()];
+        this.stack=new boolean[graph.V()];
+        for (int x=0;x< graph.V();x++){
             if (!this.marked[x]) this.dfs(graph,x);
         }
     }
-    private void dfs(DirectedGraph graph,int start){
+    private void dfs(EdgeWeightedDirectedGraph graph,int start){
         this.marked[start]=true;
         this.stack[start]=true;
-        for (int m:graph.getAdjacentV(start)){
+        for (DirectedEdge m:graph.getAdjacent(start)){
+            int t = m.to();
             if (this.isHasCycle()) return;
-            else if (!this.marked[m]){
-                this.edgeTo[m]=start;
-                this.dfs(graph, m);
-            }else if (this.stack[m]){
+            else if (!this.marked[t]){
+                this.edgeTo[t]=m;
+                this.dfs(graph, t);
+            }else if (this.stack[t]){
                 this.cycle=new ListNode<>();
-                for (int x=start;x!=m;x=this.edgeTo[x]){
+                for (DirectedEdge x=m;x!=null;x=this.edgeTo[x.from()]){
                     this.cycle.add(x);
                 }
-                this.cycle.add(m);
-                this.cycle.add(start);
             }
         }
         this.stack[start]=false;
     }
     public boolean isHasCycle(){return this.cycle!=null;}
-    public Iterable<Integer> cycle(){
+    public Iterable<DirectedEdge> cycle(){
         return this.cycle;
     }
     public String toString(){
         String temp = "";
-        String str="有向环为:";
+        String str="有向环为:"+"\n";
         if (this.cycle!=null){
-            for (int n:this.cycle()){
-                temp+=n+"-";
+            for (DirectedEdge n:this.cycle()){
+                temp+=n.toString()+"\n";
             }
             temp = temp.substring(0,temp.length()-1);
             return str+temp;
@@ -57,7 +58,7 @@ public class DirectedCycle {
 
     public static void main(String[] args) throws Exception{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        DirectedGraph graph = new DirectedGraph(reader);
+        EdgeWeightedDirectedGraph graph = new EdgeWeightedDirectedGraph(reader);
         DirectedCycle cycle = new DirectedCycle(graph);
         System.out.println(cycle.toString());
     }

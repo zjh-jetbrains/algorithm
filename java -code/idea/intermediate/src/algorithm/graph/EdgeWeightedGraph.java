@@ -23,6 +23,7 @@ public class EdgeWeightedGraph {
     public EdgeWeightedGraph(BufferedReader reader) throws Exception{
         this(Integer.parseInt(reader.readLine())); // 读取顶点数
         int temp = Integer.parseInt(reader.readLine()); // 读取边数
+        if (temp<0){throw new RuntimeException("边的数量不能为负数！");}
         for (int x=0;x<temp;x++){
             String s = reader.readLine();
             String [] strs = s.split(" ");
@@ -31,6 +32,8 @@ public class EdgeWeightedGraph {
             double weight = Double.parseDouble(strs[2]); // 权重
             if ((v>=0&&v<this.V)&&(w>=0&&w<this.V)){
                 this.addEdge(new Edge(v,w,weight));
+            }else {
+                throw new RuntimeException("顶点输入越界！");
             }
         }
     }

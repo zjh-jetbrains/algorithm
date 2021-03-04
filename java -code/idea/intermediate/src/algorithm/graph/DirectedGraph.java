@@ -21,12 +21,16 @@ public class DirectedGraph {
     public DirectedGraph(BufferedReader reader) throws Exception{
         this(Integer.parseInt(reader.readLine())); // 输入顶点数
         int temp = Integer.parseInt(reader.readLine()); //输入边数
+        if (temp<0){throw new RuntimeException("边的数量不能为负数！");}
         for (int x=0;x<temp;x++){
             String str = reader.readLine();
             String[] s = str.split(" ");
             int v=Integer.parseInt(s[0]);
             int w=Integer.parseInt(s[1]);
             if ((v>=0&&v<this.V)&&(w>=0&&w<this.V)) this.addEdge(v,w);
+            else {
+                throw new RuntimeException("顶点输入越界！");
+            }
         }
     }
     public void addEdge(int v,int w){

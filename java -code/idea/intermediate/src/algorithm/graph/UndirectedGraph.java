@@ -21,12 +21,16 @@ public class UndirectedGraph {
     public UndirectedGraph(BufferedReader bufferedReader) throws Exception{
         this(Integer.parseInt(bufferedReader.readLine()));
         int temp=Integer.parseInt(bufferedReader.readLine());
+        if (temp<0){throw new RuntimeException("边的数量不能为负数！");}
         for (int x=0;x<temp;x++){
             String str = bufferedReader.readLine();
             String[] s = str.split(" ");
             int v=Integer.parseInt(s[0]);
             int w=Integer.parseInt(s[1]);
             if ((v>=0&&v<this.V)&&(w>=0&&w<this.V)) this.addEdge(v,w);
+            else {
+                throw new RuntimeException("顶点输入越界！");
+            }
         }
     }
     public void addEdge(int v,int w){
