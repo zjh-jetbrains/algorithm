@@ -56,6 +56,7 @@ public class DijkstraSP {
     public double distTo(int v){return this.distTo[v];}
     public boolean hasPathTo(int v){return this.distTo(v)<Double.POSITIVE_INFINITY;}
     public Iterable<DirectedEdge> pathTo(int v){
+        if (!this.hasPathTo(v)) return null;
         ListNode<DirectedEdge> stack = new ListNode<>();
         for (DirectedEdge edge = this.edges[v];edge!=null;edge=this.edges[edge.from()]){
             stack.add(edge);
