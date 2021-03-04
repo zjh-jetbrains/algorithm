@@ -10,7 +10,6 @@ import java.util.Queue;
 // kruskal算法-最小生成树
 public class KruskalMST {
     private Queue<Edge> edges; // 最小生成树的边
-    private boolean [] marked; // 标记图的顶点
     public KruskalMST(EdgeWeightedGraph graph){
         this.edges = new LinkedList<>();
         Queue<Edge> queue = new PriorityQueue<>(); // 将图的所有边添加到优先队列中
