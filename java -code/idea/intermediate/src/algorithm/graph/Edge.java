@@ -1,6 +1,6 @@
 package algorithm.graph;
 
-// 带权重的边
+// 带权重的无向边
 public class Edge implements Comparable<Edge>{
     private int v; // 边的一个顶点
     private int w; // 边的另一个顶点

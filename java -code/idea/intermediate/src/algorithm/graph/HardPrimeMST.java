@@ -36,9 +36,9 @@ public class HardPrimeMST {
             }
         }
     }
-    public  Object getMinValueOfKey() {
+    private Object getMinValueOfKey() {
         if (this.queue == null) return null;
-        TreeMap<Integer,Double> tree = new TreeMap<>(this.queue); // 讲Map转化为TreeMap
+        TreeMap<Integer,Double> tree = new TreeMap<>(this.queue); // 将Map转化为TreeMap
         List<Map.Entry<Integer,Double>> list = new ArrayList<Map.Entry<Integer,Double >>(tree.entrySet());
         // 转化为List<Map.Entry<Integer,Double>>后，根据value进行升序排序
         Collections.sort(list, Comparator.comparing(Map.Entry::getValue)); // 等价于(o1, o2) -> o1.getValue().compareTo(o2.getValue())
