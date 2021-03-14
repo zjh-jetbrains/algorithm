@@ -15,6 +15,13 @@ public class InsertionSort {
             }
         }
     }
+    public static void sort(String s[],int left,int right,int d){
+        for (int x=left;x<=right;x++){
+            for (int y=x;y>left&&less(s[y],s[y-1],d);y--){
+                swap(s,y,y-1);
+            }
+        }
+    }
     /**
      * 交换数组中的两个元素
      * @param a:一个实现了Comparable接口的类型的数组
@@ -26,6 +33,11 @@ public class InsertionSort {
         a[i] = a[j];
         a[j] = t;
     }
+    private static void swap(String s[],int i,int j){
+        String str = s[i];
+        s[i]=s[j];
+        s[j]=str;
+    }
     /**
      *对两个元素进行比较
      */
@@ -35,6 +47,9 @@ public class InsertionSort {
     /**
      *输出数组
      */
+    private static boolean less(String s1,String s2,int d){
+        return s1.substring(d).compareTo(s2.substring(d))<0;
+    }
     public static void show(Comparable a[]){
         System.out.println(Arrays.toString(a));
     }
