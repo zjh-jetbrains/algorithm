@@ -2,9 +2,8 @@ package algorithm;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
+// 外排序
 public class DiskSort {
     private BufferedReader reader ;
     private byte [] index=new byte[1000000000];
